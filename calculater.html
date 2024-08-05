@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="app.css">
+  <title>Calculator</title>
+
+</head>
+
+
+<body>
+  <div class="a1">
+    <fieldset>
+      <div class="calculater">
+        <div class="display">
+          <input type="text" id="result" disabled>
+        </div>
+      </div>
+      <div>
+        <button type="button" onclick="appendInput('+')">+</button>
+        <button type="button" onclick="appendInput('*')">*</button>
+        <button type="button" onclick="clearDisplay()">C</button>
+        <button type="button" onclick="appendInput('-')">-</button>
+        <button type="button" onclick="appendInput('/')">/</button>
+        <button type="button" onclick="deleteLast()">Delete</button>
+
+        <button type="button" onclick="appendInput('7')">7</button>
+        <button type="button" onclick="appendInput('8')">8</button>
+        <button type="button" onclick="appendInput('9')">9</button>
+        <button type="button" onclick="appendInput('4')">4</button>
+        <button type="button" onclick="appendInput('5')">5</button>
+        <button type="button" onclick="appendInput('6')">6</button>
+
+        <button type="button" onclick="appendInput('1')">1</button>
+        <button type="button" onclick="appendInput('2')">2</button>
+        <button type="button" onclick="appendInput('3')">3</button>
+        <button type="button" onclick="appendInput('0')">0</button>
+        <button type="button" onclick="appendInput('.')">.</button>
+
+        <button type="button" onclick="calculate()">=</button>
+      </div>
+    </fieldset>
+  </div>
+
+</body>
+
+<script>
+
+
+  let input = '';
+const display = document.getElementById('result');
+
+function appendInput(value) {
+  input += value;
+  display.value = input;
+}
+
+function clearDisplay() {
+  input = '';
+  display.value = '0';
+}
+
+function deleteLast() {
+  input = input.slice(0, -1);
+  display.value = input || '0';
+}
+
+function calculate() {
+  try {
+    var result = eval(input);
+    display.value = result;
+    input = String(result);
+  } catch (error) {
+    display.value = 'Error';
+    input = '';
+  }
+}
+
+
+
+
+
+
+</script>
+
+</html>
